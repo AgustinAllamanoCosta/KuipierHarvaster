@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://6hrajxwiq136"]
+
+[ext_resource type="Script" path="res://Scripts/ores/BaseOre.gd" id="1_lteb1"]
+[ext_resource type="PackedScene" uid="uid://upe2x1gfb0ho" path="res://Scene/UI/HealthBarTool.tscn" id="2_vhg5s"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_m8qoe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2oonu"]
+radius = 0.741
+
+[node name="BaseOre" type="Node3D"]
+script = ExtResource("1_lteb1")
+
+[node name="HealthBarTool" parent="." instance=ExtResource("2_vhg5s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.52886, 0, 0, 0, 1, 0, 0.175711, 0)
+mesh = SubResource("PrismMesh_m8qoe")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_2oonu")

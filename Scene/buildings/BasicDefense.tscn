@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://2mliyn7bkud1"]
+
+[ext_resource type="Script" path="res://Scripts/buildings/BasicDefenseBuild.gd" id="1_7o53e"]
+[ext_resource type="PackedScene" uid="uid://upe2x1gfb0ho" path="res://Scene/UI/HealthBarTool.tscn" id="2_tlffk"]
+[ext_resource type="PackedScene" uid="uid://bup7eycu65t4x" path="res://Scene/weapons/Weapon.tscn" id="3_oe41t"]
+
+[node name="BasicDefense" type="Node"]
+script = ExtResource("1_7o53e")
+
+[node name="HealthBarTool" parent="." instance=ExtResource("2_tlffk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0281432, 1.69922, 0)
+
+[node name="Weapon" parent="." instance=ExtResource("3_oe41t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.850841, 0)

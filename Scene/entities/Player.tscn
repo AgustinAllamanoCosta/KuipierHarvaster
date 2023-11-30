@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://mp6fuwct0c5y"]
+
+[ext_resource type="Script" path="res://Scripts/entities/Player.gd" id="1_5padh"]
+[ext_resource type="PackedScene" uid="uid://bup7eycu65t4x" path="res://Scene/weapons/Weapon.tscn" id="2_y1mes"]
+[ext_resource type="PackedScene" uid="uid://cqfjt0vfijts3" path="res://Scene/tools/Miner.tscn" id="3_0l8ay"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bu4fy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nmmnx"]
+radius = 0.524229
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4cw7e"]
+radius = 0.556993
+
+[node name="Player" type="CharacterBody3D" groups=["players"]]
+collision_mask = 30
+script = ExtResource("1_5padh")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("CylinderMesh_bu4fy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_nmmnx")
+
+[node name="CamarePivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.24143, 3.96282)
+
+[node name="Camera3D" type="Camera3D" parent="CamarePivot"]
+
+[node name="Weapon" parent="." instance=ExtResource("2_y1mes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0798, 1.28578, 0)
+
+[node name="Miner" parent="." instance=ExtResource("3_0l8ay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956409, 1.33176, 0)
+
+[node name="EnemiesDetector" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemiesDetector"]
+shape = SubResource("CylinderShape3D_4cw7e")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[connection signal="body_entered" from="EnemiesDetector" to="." method="_on_enemies_detector_body_entered"]

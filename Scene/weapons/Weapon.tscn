@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bup7eycu65t4x"]
+
+[ext_resource type="Script" path="res://Scripts/weapons/Weapon.gd" id="1_vblft"]
+[ext_resource type="PackedScene" uid="uid://bwbmcctv0ix1r" path="res://Scene/weapons/BulletBasic.tscn" id="2_x4742"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6cna8"]
+radius = 9.43713
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5vld"]
+albedo_color = Color(0.964706, 0.858824, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ip125"]
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_vblft")
+bullet_blueprint = ExtResource("2_x4742")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="EnemiesDetector" type="Area3D" parent="."]
+transform = Transform3D(0.998502, 0, -0.0547236, 0, 1, 0, 0.0547236, 0, 0.998502, 0, 0, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="AttackRange" type="CollisionShape3D" parent="EnemiesDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+shape = SubResource("SphereShape3D_6cna8")
+
+[node name="Pivote" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivote"]
+editor_description = "Basic Weapong for Players"
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_i5vld")
+mesh = SubResource("PrismMesh_ip125")
+skeleton = NodePath("../..")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

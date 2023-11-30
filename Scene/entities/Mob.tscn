@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4xn4y17l1yph"]
+
+[ext_resource type="Script" path="res://Scripts/entities/Mob.gd" id="1_2unma"]
+[ext_resource type="PackedScene" uid="uid://upe2x1gfb0ho" path="res://Scene/UI/HealthBarTool.tscn" id="2_martm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i02ir"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jw76w"]
+material = SubResource("StandardMaterial3D_i02ir")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2craq"]
+radius = 0.524229
+
+[node name="Mob" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_2unma")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("CylinderMesh_jw76w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_2craq")
+
+[node name="HealthBarTool" parent="." instance=ExtResource("2_martm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31382, 0)

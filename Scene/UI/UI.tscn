@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://l2tricgjs0nn"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_7pke1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_slym2"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_vhr3c"]
+line_spacing = 15.0
+
+[node name="UI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7pke1")
+
+[node name="Retry" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="Retry"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Retry/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Retry/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Lose
+"
+label_settings = SubResource("LabelSettings_slym2")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="Retry/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "press ENTER to retry
+"
+label_settings = SubResource("LabelSettings_vhr3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MainMenu" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kupier Harvaster
+"
+label_settings = SubResource("LabelSettings_slym2")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="StartButton" type="Button" parent="MainMenu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Deploy"
+
+[node name="WinScrren" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScrren"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScrren/CenterContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="WinScrren/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "You Win
+"
+label_settings = SubResource("LabelSettings_slym2")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[connection signal="pressed" from="MainMenu/CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

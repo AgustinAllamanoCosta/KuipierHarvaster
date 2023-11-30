@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://gn8h1ul5paa6"]
+
+[ext_resource type="PackedScene" uid="uid://b6utr3ytmmbyp" path="res://Scene/maps/Map.tscn" id="1_fyos8"]
+[ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="2_w3lqc"]
+[ext_resource type="PackedScene" uid="uid://l2tricgjs0nn" path="res://Scene/UI/UI.tscn" id="3_t1rgd"]
+[ext_resource type="PackedScene" uid="uid://drce5lr0sxk6k" path="res://Scene/maps/spawn.tscn" id="4_r52ph"]
+[ext_resource type="PackedScene" uid="uid://c4xn4y17l1yph" path="res://Scene/entities/Mob.tscn" id="5_ujbd1"]
+
+[node name="Main" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("1_fyos8")]
+
+[node name="Player" parent="." instance=ExtResource("2_w3lqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.67072, 0)
+
+[node name="UI" parent="." instance=ExtResource("3_t1rgd")]
+
+[node name="spawn" parent="." node_paths=PackedStringArray("player", "spawn_points") instance=ExtResource("4_r52ph")]
+mob_blueprint = ExtResource("5_ujbd1")
+player = NodePath("../Player")
+spawn_points = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3")]
+
+[node name="Node3D" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4483, 8.04987, 0)
+
+[node name="Node3D2" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4991, 10.1475, 0)
+
+[node name="Node3D3" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.72292, -21.991)
