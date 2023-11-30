@@ -10,6 +10,7 @@ var target: StaticBody3D = null
 
 func _process(delta):
 	targets = attack_range.get_overlapping_bodies()
+	print(targets)
 	if(targets.is_empty()):
 		target = null
 	else:

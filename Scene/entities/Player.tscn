@@ -41,6 +41,4 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemiesDetector"]
 shape = SubResource("CylinderShape3D_4cw7e")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-
 [connection signal="body_entered" from="EnemiesDetector" to="." method="_on_enemies_detector_body_entered"]
