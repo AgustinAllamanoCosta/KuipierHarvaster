@@ -7,7 +7,7 @@ var base_attack = 1
 var target = null
 
 func _process(delta):
-	
+
 	var direction = carrier.direction.normalized()
 	var up = Vector3.UP
 	var targets = attack_range.get_overlapping_bodies()

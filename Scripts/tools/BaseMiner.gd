@@ -10,7 +10,6 @@ var target: StaticBody3D = null
 
 func _process(delta):
 	targets = attack_range.get_overlapping_bodies()
-	print(targets)
 	if(targets.is_empty()):
 		target = null
 	else:
@@ -23,3 +22,7 @@ func _on_timer_timeout():
 			ore_inventory = ore_inventory + target.value
 			target.queue_free()
 			target = null
+			print(ore_inventory)
+
+func get_ore_by_type(ore_type:String):
+	return ore_inventory

@@ -3,7 +3,7 @@ class_name BaseOre extends StaticBody3D
 @export var health = 10
 @export var ore_name = 'Base Ore'
 @export var type = 'base'
-@export var value = 4
+@export var value = 10
 
 @onready var health_tool: HealthBarTool = $HealthBarTool
 

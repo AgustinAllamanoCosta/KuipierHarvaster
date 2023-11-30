@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8wcluibpi06j"]
+
+[ext_resource type="Script" path="res://Scripts/tools/BaseBuilder.gd" id="1_2awvv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wnui6"]
+radius = 9.43713
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2e56q"]
+
+[node name="Builder" type="Node3D"]
+script = ExtResource("1_2awvv")
+
+[node name="ZoneDetector" type="Area3D" parent="."]
+transform = Transform3D(0.998502, 0, -0.0547236, 0, 1, 0, 0.0547236, 0, 0.998502, 0, 0, 0)
+collision_layer = 8
+collision_mask = 8
+
+[node name="BuilderRange" type="CollisionShape3D" parent="ZoneDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+shape = SubResource("SphereShape3D_wnui6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.191231, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_2e56q")
