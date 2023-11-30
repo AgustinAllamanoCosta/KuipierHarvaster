@@ -29,7 +29,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_enemies_detector_body_entered(body):
-
 	health -= body.mob_damage
 
 	if health <= 0:

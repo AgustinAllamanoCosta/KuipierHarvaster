@@ -14,7 +14,7 @@ radius = 0.524229
 
 [node name="Mob" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 15
+collision_mask = 21
 script = ExtResource("1_2unma")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -23,6 +23,7 @@ script = ExtResource("1_2unma")
 mesh = SubResource("CylinderMesh_jw76w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.19802, 0, 0, 0, 1, 0, 0, 0, 1.20084, 0, 0, 0)
 shape = SubResource("CylinderShape3D_2craq")
 
 [node name="HealthBarTool" parent="." instance=ExtResource("2_martm")]

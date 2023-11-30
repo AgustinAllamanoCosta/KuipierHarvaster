@@ -28,3 +28,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4991, 10.1475, 0)
 
 [node name="Node3D3" type="Node3D" parent="spawn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.72292, -21.991)
+
+[connection signal="player_dead" from="Player" to="UI" method="_on_main_player_lose"]

@@ -35,7 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0798, 1.28578, 0)
 [node name="Miner" parent="." instance=ExtResource("3_0l8ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956409, 1.33176, 0)
 
-[node name="EnemiesDetector" type="Area3D" parent="."]
+[node name="EnemiesDetector" type="Area3D" parent="." groups=["mob"]]
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EnemiesDetector"]
