@@ -25,10 +25,13 @@ func entity_die():
 	kille_entity_in_orde += 1
 
 func spawn_entity(spawn_point):
-	var mob: Mob = mob_blueprint.instantiate()
-	mob.player = player
-	mob.transform = spawn_point
-	add_child(mob)
-	mob.dead.connect(player.get_node("Weapon").enemy_die.bind())
-	mob.dead.connect(self.entity_die.bind())
-	spawn_entities += 1
+	if self.player:
+		var mob: Mob = mob_blueprint.instantiate()
+		mob.player = player
+		mob.transform = spawn_point
+		add_child(mob)
+		mob.dead.connect(self.player.get_node("Weapon").enemy_die.bind())
+		mob.dead.connect(self.entity_die.bind())
+		spawn_entities += 1
+	else:
+		print("no player found")

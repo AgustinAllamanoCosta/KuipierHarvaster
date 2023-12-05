@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6utr3ytmmbyp"]
+[gd_scene load_steps=10 format=3 uid="uid://b6utr3ytmmbyp"]
 
 [ext_resource type="Material" uid="uid://b6183rvu3vu83" path="res://Assets/floorMatirial.tres" id="1_0cs8p"]
+[ext_resource type="PackedScene" uid="uid://l4vagmbqjnop" path="res://Scene/ores/BaseOre.tscn" id="2_fa20w"]
+[ext_resource type="PackedScene" uid="uid://cmr8kbcw53vo2" path="res://Scene/buildings/ConstructionZone.tscn" id="3_w5kcd"]
+[ext_resource type="PackedScene" uid="uid://2mliyn7bkud1" path="res://Scene/buildings/BasicDefense.tscn" id="4_hg88b"]
+[ext_resource type="PackedScene" uid="uid://drce5lr0sxk6k" path="res://Scene/maps/spawn.tscn" id="5_ewq5s"]
+[ext_resource type="PackedScene" uid="uid://c4xn4y17l1yph" path="res://Scene/entities/Mob.tscn" id="6_g160l"]
+[ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="7_qgrvt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6v6ju"]
 
@@ -75,3 +81,27 @@ mesh = SubResource("BoxMesh_e5v8v")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.99958, 0.0273089, 0.00972045, -0.00820692, -0.0549982, 0.998453, 0.0278013, -0.998113, -0.0547509, 1.76398, 32.6189, -14.0417)
 shadow_enabled = true
+
+[node name="BaseOre" parent="." instance=ExtResource("2_fa20w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.41684, 2.66204, 0)
+
+[node name="ConstructionZone" parent="." instance=ExtResource("3_w5kcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84037, 1.81625, 0.158565)
+build_blueprint = ExtResource("4_hg88b")
+
+[node name="spawn" parent="." node_paths=PackedStringArray("player", "spawn_points") instance=ExtResource("5_ewq5s")]
+mob_blueprint = ExtResource("6_g160l")
+player = NodePath("../Player")
+spawn_points = [NodePath("Node3D"), NodePath("Node3D2"), NodePath("Node3D3")]
+
+[node name="Node3D" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4483, 8.04987, 0)
+
+[node name="Node3D2" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4991, 10.1475, 0)
+
+[node name="Node3D3" type="Node3D" parent="spawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.72292, -21.991)
+
+[node name="Player" parent="." instance=ExtResource("7_qgrvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.67072, 0)
