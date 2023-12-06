@@ -22,6 +22,7 @@ func look_at_move(direction):
 
 func _physics_process(delta):
 
+	super._physics_process(delta)
 	direction = input.input_controller()
 	look_at_move(direction)
 

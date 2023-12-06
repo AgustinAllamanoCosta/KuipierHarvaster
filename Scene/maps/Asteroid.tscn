@@ -1,25 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0as4v2nrqak4"]
+[gd_scene load_steps=6 format=3 uid="uid://c0as4v2nrqak4"]
 
 [ext_resource type="Script" path="res://Scripts/maps/GravityFildForce.gd" id="1_5ee0q"]
 [ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="2_3oqk1"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_c7qb8"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_olui1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_te6lx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_15kwh"]
 
 [node name="Planetoid" type="Node3D"]
 
 [node name="GravityForceAction" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 27
 script = ExtResource("1_5ee0q")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="GravityForceAction"]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-mesh = SubResource("SphereMesh_c7qb8")
-skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GravityForceAction"]
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
 shape = SubResource("SphereShape3D_olui1")
 
 [node name="Player" parent="." instance=ExtResource("2_3oqk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 73.8138, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 71.6205, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99958, 0.0273089, 0.00972045, -0.00820692, -0.0549982, 0.998453, 0.0278013, -0.998113, -0.054751, 0.97449, 92.3685, -17.8276)
+shadow_enabled = true
+
+[node name="Planetoid" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Planetoid"]
+transform = Transform3D(101, 0, 0, 0, 101, 0, 0, 0, 101, 0, 0, 0)
+shape = SubResource("SphereShape3D_te6lx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Planetoid"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("SphereMesh_15kwh")

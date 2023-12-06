@@ -4,5 +4,4 @@ func _process(delta):
 
 	var targets = get_overlapping_bodies()
 	for target in targets:
-		print(target.name)
-		target.pyshics.gravity_point = global_position
+		target.celestial_body_position = global_position
