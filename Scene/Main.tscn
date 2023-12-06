@@ -1,16 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://gn8h1ul5paa6"]
+[gd_scene load_steps=3 format=3 uid="uid://gn8h1ul5paa6"]
 
-[ext_resource type="PackedScene" uid="uid://b6utr3ytmmbyp" path="res://Scene/maps/Map.tscn" id="1_fyos8"]
-[ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="2_w3lqc"]
+[ext_resource type="PackedScene" uid="uid://c0as4v2nrqak4" path="res://Scene/maps/Asteroid.tscn" id="2_xmglh"]
 [ext_resource type="PackedScene" uid="uid://l2tricgjs0nn" path="res://Scene/UI/UI.tscn" id="3_t1rgd"]
 
 [node name="Main" type="Node"]
 
-[node name="Map" parent="." instance=ExtResource("1_fyos8")]
-
-[node name="Player" parent="." instance=ExtResource("2_w3lqc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.67072, 0)
-
 [node name="UI" parent="." instance=ExtResource("3_t1rgd")]
 
-[connection signal="player_dead" from="Player" to="UI" method="_on_main_player_lose"]
+[node name="Planetoid" parent="." instance=ExtResource("2_xmglh")]
