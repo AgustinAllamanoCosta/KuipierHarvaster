@@ -21,7 +21,7 @@ transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
 shape = SubResource("SphereShape3D_olui1")
 
 [node name="Player" parent="." instance=ExtResource("2_3oqk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 71.6205, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 67.6365, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.99958, 0.0273089, 0.00972045, -0.00820692, -0.0549982, 0.998453, 0.0278013, -0.998113, -0.054751, 0.97449, 92.3685, -17.8276)

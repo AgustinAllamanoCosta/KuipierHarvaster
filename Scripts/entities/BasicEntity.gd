@@ -4,7 +4,8 @@ var input
 var pyshics
 var direction = Vector3.ZERO
 var gravitational_constant = 999999.0
-var celestial_body_position = null
+var celestial_body_position: Vector3 = Vector3.ZERO
+var gravitational_force: Vector3 = Vector3.ZERO
 
 func _init():
 
@@ -12,18 +13,18 @@ func _init():
 	pyshics = BasicPhysics.new()
 
 func _physics_process(delta):
+	var direction_to_center = celestial_body_position - global_transform.origin
+	var distance_to_center = direction_to_center.length()
 
-	if self.celestial_body_position != null:
-		var direction_to_celestial_body = self.celestial_body_position - global_transform.origin
-		var distance_to_celestial_body = direction_to_celestial_body.length()
+	if distance_to_center > 0.1:
+		var normalized_direction = direction_to_center.normalized()
 
-		if distance_to_celestial_body > 0.1:  # Adjust this threshold as needed
-			# Calculate the normalized direction vector towards the center
-			var normalized_direction = direction_to_celestial_body.normalized()
+		gravitational_force = (normalized_direction * gravitational_constant) / (distance_to_center * distance_to_center)
+		
+		#velocity += gravitational_force * delta
+		#var look_rotation = transform.basis.looking_at(-normalized_direction,Vector3.UP)
+		#var new_transform = Transform3D(global_transform.basis, global_transform.origin)
+		#new_transform.basis = look_rotation
+		#transform.basis = new_transform.looking_at(Vector3.DOWN,Vector3.BACK).basis
 
-			# Calculate the gravitational force based on the distance and the direction towards the center
-			var gravitational_force = (normalized_direction * gravitational_constant) / (distance_to_celestial_body * distance_to_celestial_body)
-
-			# Apply the gravitational force to the character's velocity
-			velocity += gravitational_force * delta
-			move_and_slide()
+	move_and_slide()

@@ -9,6 +9,7 @@ var health = 10
 signal player_dead
 
 func _ready():
+
 	weapon.carrier = self
 	if builderTool:
 		builderTool.carrier = self
@@ -19,27 +20,28 @@ func look_at_move(direction):
 		direction = direction.normalized()
 		$Pivot.look_at(position + direction, Vector3.UP)
 
-
 func _physics_process(delta):
 
 	super._physics_process(delta)
+	super(delta)
 	direction = input.input_controller()
 	look_at_move(direction)
 
 	pyshics.target_velocity.x = direction.x * speed
 	pyshics.target_velocity.z = direction.z * speed
 
-	velocity = pyshics.target_velocity
-	super(delta)
+	velocity = pyshics.target_velocity + gravitational_force * delta
 	move_and_slide()
 
 func _on_enemies_detector_body_entered(body):
+
 	health -= body.mob_damage
 
 	if health <= 0:
 		player_dead.emit()
 
 func get_ore_from_inventory(ore_type:String):
+
 	var ore = miner.get_ore_by_type(ore_type)
 	print(ore_type)
 	print(ore)

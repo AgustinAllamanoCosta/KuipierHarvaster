@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://gn8h1ul5paa6"]
 
-[ext_resource type="PackedScene" uid="uid://c0as4v2nrqak4" path="res://Scene/maps/Asteroid.tscn" id="2_xmglh"]
+[ext_resource type="PackedScene" uid="uid://c0as4v2nrqak4" path="res://Scene/maps/Asteroid.tscn" id="2_inla5"]
 [ext_resource type="PackedScene" uid="uid://l2tricgjs0nn" path="res://Scene/UI/UI.tscn" id="3_t1rgd"]
 
 [node name="Main" type="Node"]
 
 [node name="UI" parent="." instance=ExtResource("3_t1rgd")]
 
-[node name="Planetoid" parent="." instance=ExtResource("2_xmglh")]
+[node name="Planetoid" parent="." instance=ExtResource("2_inla5")]
