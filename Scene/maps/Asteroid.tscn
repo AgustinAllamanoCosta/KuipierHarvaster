@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0as4v2nrqak4"]
+[gd_scene load_steps=8 format=3 uid="uid://c0as4v2nrqak4"]
 
 [ext_resource type="Script" path="res://Scripts/maps/GravityFildForce.gd" id="1_5ee0q"]
 [ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="2_3oqk1"]
@@ -8,7 +8,11 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_te6lx"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rajuc"]
+albedo_color = Color(0, 1, 0.00784314, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_15kwh"]
+material = SubResource("StandardMaterial3D_rajuc")
 
 [node name="Planetoid" type="Node3D"]
 

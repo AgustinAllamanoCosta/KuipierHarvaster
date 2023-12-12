@@ -1,30 +1,39 @@
 class_name BasicEntity extends CharacterBody3D
 
-var input
-var pyshics
 var direction = Vector3.ZERO
-var gravitational_constant = 999999.0
 var celestial_body_position: Vector3 = Vector3.ZERO
+var target_velocity = Vector3.ZERO
+var gravitational_constant = 999999.0
 var gravitational_force: Vector3 = Vector3.ZERO
 
-func _init():
+func calculate_gravity(delta):
 
-	input = BasicInputs.new()
-	pyshics = BasicPhysics.new()
-
-func _physics_process(delta):
-	var direction_to_center = celestial_body_position - global_transform.origin
-	var distance_to_center = direction_to_center.length()
-
-	if distance_to_center > 0.1:
+	if not is_on_floor():
+		var direction_to_center = self.celestial_body_position - global_transform.origin
+		var distance_to_center = direction_to_center.length()
 		var normalized_direction = direction_to_center.normalized()
+		self.gravitational_force = (normalized_direction * self.gravitational_constant) / (distance_to_center * distance_to_center)
+	else:
+		self.gravitational_force = Vector3.ZERO
 
-		gravitational_force = (normalized_direction * gravitational_constant) / (distance_to_center * distance_to_center)
-		
-		#velocity += gravitational_force * delta
-		#var look_rotation = transform.basis.looking_at(-normalized_direction,Vector3.UP)
-		#var new_transform = Transform3D(global_transform.basis, global_transform.origin)
-		#new_transform.basis = look_rotation
-		#transform.basis = new_transform.looking_at(Vector3.DOWN,Vector3.BACK).basis
+func input_controller():
 
-	move_and_slide()
+	if Input.is_action_pressed("move_right"):
+		self.direction.x += 1
+	if Input.is_action_pressed("move_left"):
+		self.direction.x -= 1
+	if Input.is_action_pressed("move_back"):
+		self.direction.z += 1
+	if Input.is_action_pressed("move_forward"):
+		self.direction.z -= 1
+
+func calculate_target_velocity(speed):
+	self.target_velocity = Vector3.ZERO
+	self.target_velocity.x = self.direction.x * speed
+	self.target_velocity.z = self.direction.z * speed
+	self.target_velocity = self.target_velocity + self.gravitational_force
+
+func calculate_tanget_direction():
+	var normal = self.gravitational_force.normalized()
+	var vector2 = Vector3(-normal.z, normal.x, normal.y)
+	self.direction = normal.cross(vector2)
