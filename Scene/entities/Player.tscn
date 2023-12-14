@@ -17,24 +17,22 @@ radius = 0.556993
 collision_mask = 30
 script = ExtResource("1_5padh")
 
-[node name="PivotCamara" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="PivotCamara"]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 5.24143, 3.96282)
+
+[node name="RayCastFront" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.995931, 0)
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Weapon" parent="Pivot" instance=ExtResource("2_y1mes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0798, 1.28578, 0)
-visible = false
 
 [node name="Miner" parent="Pivot" instance=ExtResource("3_0l8ay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956409, 1.33176, 0)
-visible = false
 
 [node name="BuilderTool" parent="Pivot" instance=ExtResource("4_tgwo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14815, 1.18744)
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
 mesh = SubResource("CylinderMesh_bu4fy")

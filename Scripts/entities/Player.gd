@@ -14,20 +14,17 @@ func _ready():
 	if builderTool:
 		builderTool.carrier = self
 
-func look_at_move(direction):
+func look_at_move():
 
 	if self.direction != Vector3.ZERO:
-		self.direction = self.direction.normalized()
 		$Pivot.look_at(position + self.direction, Vector3.UP)
 
 func _physics_process(delta):
 	self.calculate_gravity(delta)
-	self.calculate_tanget_direction()
 	self.input_controller()
 	self.calculate_target_velocity(speed)
-	look_at_move(self.direction)
-	velocity = self.target_velocity
-	move_and_slide()
+	look_at_move()
+	self.move_entity(delta)
 
 func _on_enemies_detector_body_entered(body):
 	

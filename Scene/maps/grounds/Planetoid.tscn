@@ -1,8 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0as4v2nrqak4"]
+[gd_scene load_steps=6 format=3 uid="uid://c0as4v2nrqak4"]
 
 [ext_resource type="Script" path="res://Scripts/maps/GravityFildForce.gd" id="1_5ee0q"]
-[ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="2_3oqk1"]
-[ext_resource type="PackedScene" uid="uid://cmr8kbcw53vo2" path="res://Scene/buildings/ConstructionZone.tscn" id="3_htqan"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_olui1"]
 
@@ -25,9 +23,6 @@ script = ExtResource("1_5ee0q")
 transform = Transform3D(150, 0, 0, 0, 150, 0, 0, 0, 150, 0, 0, 0)
 shape = SubResource("SphereShape3D_olui1")
 
-[node name="Player" parent="." instance=ExtResource("2_3oqk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 67.6365, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.99958, 0.0273089, 0.00972045, -0.00820692, -0.0549982, 0.998453, 0.0278013, -0.998113, -0.054751, 0.97449, 92.3685, -17.8276)
 shadow_enabled = true
@@ -43,9 +38,3 @@ shape = SubResource("SphereShape3D_te6lx")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planetoid"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("SphereMesh_15kwh")
-
-[node name="ConstructionZone1" parent="." instance=ExtResource("3_htqan")]
-transform = Transform3D(1, 0, 0, 0, 0.862461, 0.506124, 0, -0.506124, 0.862461, -6.55252, 48.1675, -14.7989)
-
-[node name="ConstructionZone2" parent="." instance=ExtResource("3_htqan")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59166, 49.7905, 0)

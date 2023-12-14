@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5rjjvvxia1t"]
+
+[ext_resource type="PackedScene" uid="uid://c0as4v2nrqak4" path="res://Scene/maps/grounds/Planetoid.tscn" id="1_hcj75"]
+[ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="2_8t72s"]
+
+[node name="SpaceMap" type="Node3D"]
+
+[node name="Planetoid" parent="." instance=ExtResource("1_hcj75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0179443, -4.099, 2.54175)
+
+[node name="Player" parent="." instance=ExtResource("2_8t72s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 68.0052, 0)
