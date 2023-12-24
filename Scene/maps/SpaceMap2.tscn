@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl5pguxdob17l"]
+
+[ext_resource type="PackedScene" uid="uid://mp6fuwct0c5y" path="res://Scene/entities/Player.tscn" id="1_rdh7u"]
+[ext_resource type="PackedScene" uid="uid://8mwmwtc3mxaf" path="res://Scene/maps/grounds/FlatAsteroid.tscn" id="2_c04h1"]
+
+[node name="SpaceMap2" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rdh7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9085, 32.4703, 15.0688)
+
+[node name="FlatAsteroid" parent="." instance=ExtResource("2_c04h1")]

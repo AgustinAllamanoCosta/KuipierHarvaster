@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://8mwmwtc3mxaf"]
+
+[ext_resource type="Script" path="res://Scripts/maps/GravityFildForce.gd" id="1_o0i3k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dkeos"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ngru8"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yduud"]
+
+[node name="FlatAsteroid" type="Node3D"]
+
+[node name="GravityForceAction" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 27
+script = ExtResource("1_o0i3k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityForceAction"]
+transform = Transform3D(131.005, 0, 0, 0, 62.54, 0, 0, 0, 95.6005, 0, 0, 0)
+shape = SubResource("SphereShape3D_dkeos")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.99958, 0.0273089, 0.00972045, -0.00820692, -0.0549982, 0.998453, 0.0278013, -0.998113, -0.054751, 0.97449, 92.3685, -17.8276)
+shadow_enabled = true
+
+[node name="FlatAsteroid" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FlatAsteroid"]
+transform = Transform3D(98.2927, 0, 0, 0, 7.22131, 0, 0, 0, 63.9616, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ngru8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FlatAsteroid"]
+transform = Transform3D(100, 0, 0, 0, 6.74979, 0, 0, 0, 64.9602, 0, 0, 0)
+mesh = SubResource("CylinderMesh_yduud")

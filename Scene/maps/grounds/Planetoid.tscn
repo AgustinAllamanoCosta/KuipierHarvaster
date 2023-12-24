@@ -6,11 +6,11 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_te6lx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rajuc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bgxb5"]
 albedo_color = Color(0, 1, 0.00784314, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_15kwh"]
-material = SubResource("StandardMaterial3D_rajuc")
+material = SubResource("StandardMaterial3D_bgxb5")
 
 [node name="Planetoid" type="Node3D"]
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://gn8h1ul5paa6"]
+[gd_scene load_steps=3 format=3 uid="uid://svdhfs1gdrk5"]
 
-[ext_resource type="PackedScene" uid="uid://b5rjjvvxia1t" path="res://Scene/maps/SpaceMap.tscn" id="2_sblx2"]
+[ext_resource type="PackedScene" uid="uid://dl5pguxdob17l" path="res://Scene/maps/SpaceMap2.tscn" id="2_nl0aq"]
 [ext_resource type="PackedScene" uid="uid://l2tricgjs0nn" path="res://Scene/UI/UI.tscn" id="3_t1rgd"]
 
 [node name="Main" type="Node"]
 
 [node name="UI" parent="." instance=ExtResource("3_t1rgd")]
 
-[node name="SpaceMap" parent="." instance=ExtResource("2_sblx2")]
+[node name="SpaceMap2" parent="." instance=ExtResource("2_nl0aq")]

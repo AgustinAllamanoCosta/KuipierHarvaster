@@ -48,9 +48,22 @@ func move_entity(delta):
 	move_and_slide()
 	if self.ray_cast.is_colliding():
 		var normal_ground_vector: Vector3 = self.ray_cast.get_collision_normal()
-		self.align_with_y(normal_ground_vector)
+		var ground_position = self.ray_cast.get_collision_point()
+		self.align_with_ground(normal_ground_vector,ground_position)
 		
 
 func align_with_y(ground_normal: Vector3):
 	var target_rotation = Basis().looking_at(ground_normal.inverse(),Vector3.UP)
 	pivot_point.global_transform.basis = target_rotation
+
+func align_with_ground(ground_normal: Vector3, ground_position: Vector3):
+	if ground_normal == Vector3.ZERO:
+		return  # No valid normal, cannot align
+
+	var up_vector = (self.pivot_point.global_transform.origin - ground_position).normalized()
+	var side_vector = ground_normal.cross(up_vector).normalized()
+	var new_up = side_vector.cross(ground_normal)
+
+	var rotation_basis = Basis(side_vector, ground_normal, new_up)
+
+	self.pivot_point.global_transform.basis = rotation_basis
