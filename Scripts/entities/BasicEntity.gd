@@ -3,9 +3,10 @@ class_name BasicEntity extends CharacterBody3D
 var direction = Vector3.ZERO
 var celestial_body_position: Vector3 = Vector3.ZERO
 var target_velocity = Vector3.ZERO
-var gravitational_constant = 999999.0
+var gravitational_constant = 9999.0
 var gravitational_force: Vector3 = Vector3.ZERO
 var input_press: bool = false
+
 @onready var pivot_point: Node3D = $Pivot
 @onready var ray_cast: RayCast3D = $RayCastFront
 
@@ -50,11 +51,6 @@ func move_entity(delta):
 		var normal_ground_vector: Vector3 = self.ray_cast.get_collision_normal()
 		var ground_position = self.ray_cast.get_collision_point()
 		self.align_with_ground(normal_ground_vector,ground_position)
-		
-
-func align_with_y(ground_normal: Vector3):
-	var target_rotation = Basis().looking_at(ground_normal.inverse(),Vector3.UP)
-	pivot_point.global_transform.basis = target_rotation
 
 func align_with_ground(ground_normal: Vector3, ground_position: Vector3):
 	if ground_normal == Vector3.ZERO:
