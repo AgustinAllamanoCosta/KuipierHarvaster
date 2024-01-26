@@ -15,12 +15,12 @@ func _ready():
 func _physics_process(delta):
 	if player != null:
 		var direction_to_player = (player.global_position - global_position).normalized()
-		pyshics.target_velocity.x = direction_to_player.x * speed
-		pyshics.target_velocity.z = direction_to_player.z * speed
-
-		velocity = pyshics.target_velocity
-		super(delta)
-		move_and_slide()
+		
+		var direction = Vector3.ZERO
+		var gravity_force = self.calculate_gravity(delta)
+		direction = self.input_controller(direction_to_player)
+		var target_velocity = self.calculate_target_velocity(speed,direction,Vector3.ZERO)
+		self.move_entity(delta,target_velocity)
 
 func _process(delta):
 	if(life <= 0):
