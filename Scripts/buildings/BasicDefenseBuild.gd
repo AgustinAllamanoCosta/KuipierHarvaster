@@ -1,5 +1,6 @@
 class_name BasicDefenseBuild extends BasicEntity
 
+var direction = Vector3.ZERO
 @export var health = 10
 @onready var health_tool: HealthBarTool = $HealthBarTool
 @onready var weapon: Weapon = $Weapon

@@ -30,7 +30,7 @@ func spawn_entity(spawn_point):
 		mob.player = player
 		mob.transform = spawn_point
 		add_child(mob)
-		mob.dead.connect(self.player.get_node("Weapon").enemy_die.bind())
+		mob.dead.connect(self.player.weapon.enemy_die.bind()) 
 		mob.dead.connect(self.entity_die.bind())
 		spawn_entities += 1
 	else:

@@ -35,7 +35,7 @@ transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("BoxShape3D_6v6ju")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallOne"]
-transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 1.30841, 0, 0, 0, 100, 0, -0.711693, 0)
 material_override = ExtResource("1_0cs8p")
 mesh = SubResource("BoxMesh_e5v8v")
 
@@ -48,7 +48,7 @@ transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("BoxShape3D_6v6ju")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallTwo"]
-transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 1.39193, 0, 0, 0, 100, 0, -0.753288, 0)
 material_override = ExtResource("1_0cs8p")
 mesh = SubResource("BoxMesh_e5v8v")
 
@@ -61,7 +61,7 @@ transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, 0, 0, 0)
 shape = SubResource("BoxShape3D_6v6ju")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WallThre"]
-transform = Transform3D(100, 0, 0, 0, 3, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 1.30474, 0, 0, 0, 100, 0, -0.711678, 0)
 material_override = ExtResource("1_0cs8p")
 mesh = SubResource("BoxMesh_e5v8v")
 

@@ -3,9 +3,9 @@ class_name Player extends BasicEntity
 var speed = 14
 var health = 10
 var direction = Vector3.ZERO
-@onready var weapon: Weapon = $Pivot/Weapon
-@onready var builderTool: BaseBuilder = $Pivot/BuilderTool
-@onready var miner: BaseMiner = $Pivot/Miner
+@export var weapon: Weapon
+@export var builderTool: BaseBuilder
+@export var miner: BaseMiner
 
 signal player_dead
 
@@ -21,6 +21,7 @@ func look_at_move(direction):
 		$Pivot.look_at(position + self.direction, Vector3.UP)
 
 func _physics_process(delta):
+
 	var direction = Vector3.ZERO
 	var gravity_force = self.calculate_gravity(delta)
 	direction = self.input_controller(direction)
