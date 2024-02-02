@@ -4,6 +4,7 @@ var base_attack = 1
 @export var bullet_blueprint: PackedScene
 @onready var carrier: BasicEntity
 @onready var attack_range: Area3D = $EnemiesDetector
+
 var target = null
 
 func _process(delta):

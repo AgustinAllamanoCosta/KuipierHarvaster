@@ -14,6 +14,10 @@ config/name="Kuiper Harvaster"
 run/main_scene="res://Scene/Main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[autoload]
+
+SignalBus="*res://Scripts/Signals/SignalBus.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Godot-MagicaVoxel-Importer-with-Extensions-5e4d95c467fd225b7f79b53f57d062ac6f130e04/addons/MagicaVoxel_Importer_with_Extensions/plugin.cfg")

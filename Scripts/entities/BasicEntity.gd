@@ -1,15 +1,12 @@
 class_name BasicEntity extends CharacterBody3D
 
 var celestial_body_position: Vector3 = Vector3.ZERO
-var gravitational_constant = 9999.0
+var gravitational_constant = 9.82
 var input_press: bool = false
 
 func calculate_gravity(delta):
 
-	var direction_to_center = self.celestial_body_position - global_transform.origin
-	var distance_to_center = direction_to_center.length()
-	var normalized_direction = direction_to_center.normalized()
-	return (normalized_direction * self.gravitational_constant) / (distance_to_center * distance_to_center)
+	return Vector3(0,-self.gravitational_constant,0)
 
 func input_controller(diretion_input):
 
@@ -29,10 +26,10 @@ func input_controller(diretion_input):
 		self.input_press = true
 	return direction
 
-func calculate_target_velocity(speed,direction,gravitational_force):
+func calculate_target_velocity(speed,direction,gravitational_force,input_press):
 	
 	var target_velocity = Vector3.ZERO
-	if self.input_press:
+	if input_press:
 		target_velocity.x = direction.x * speed
 		target_velocity.z = direction.z * speed
 	if not is_on_floor():

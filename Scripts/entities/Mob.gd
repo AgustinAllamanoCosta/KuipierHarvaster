@@ -6,25 +6,22 @@ var mob_damage = 10
 @export var speed = 7
 @export var player: Node3D
 @onready var health_bar: HealthBarTool = $HealthBarTool
-
-signal dead
+@onready var signalBus: SignalBus = get_node("/root/SignalBus")
 
 func _ready():
 	health_bar.entity_health = life
 
 func _physics_process(delta):
 	if player != null:
-		var direction_to_player = (player.global_position - global_position).normalized()
-		
 		var direction = Vector3.ZERO
+		direction = (player.global_position - global_position).normalized()
 		var gravity_force = self.calculate_gravity(delta)
-		direction = self.input_controller(direction_to_player)
-		var target_velocity = self.calculate_target_velocity(speed,direction,Vector3.ZERO)
+		var target_velocity = self.calculate_target_velocity(speed,direction,gravity_force,true)
 		self.move_entity(delta,target_velocity)
 
 func _process(delta):
 	if(life <= 0):
-		dead.emit()
+		signalBus.emit_signal('dead')
 		queue_free()
 
 func hurt(damage):

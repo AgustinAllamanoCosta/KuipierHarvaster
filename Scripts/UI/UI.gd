@@ -1,6 +1,6 @@
 class_name UI extends Control
 
-signal game_start
+@onready var signalBus: SignalBus = get_node("/root/SignalBus")
 
 func _ready():
 	get_tree().paused = true
@@ -8,6 +8,8 @@ func _ready():
 	$MainMenu.show()
 	$WinScrren.hide()
 	$MainMenu/CenterContainer/VBoxContainer/StartButton.grab_focus()
+	signalBus.connect('player_dead',_on_main_player_lose)
+	signalBus.connect('player_win',_on_main_player_win)
 
 func _unhandled_input(event):
 	if $Retry.visible:
@@ -21,7 +23,7 @@ func _on_start_button_pressed():
 func _process(delta):
 	if Input.is_action_pressed("accept"):
 		$MainMenu/CenterContainer/VBoxContainer/StartButton.emit_signal("pressed")
-		game_start.emit()
+		self.signalBus.emit('game_start')
 
 func _on_main_player_win():
 	get_tree().paused = true

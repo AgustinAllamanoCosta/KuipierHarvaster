@@ -6,8 +6,7 @@ var direction = Vector3.ZERO
 @export var weapon: Weapon
 @export var builderTool: BaseBuilder
 @export var miner: BaseMiner
-
-signal player_dead
+@onready var signalBus: SignalBus = get_node("/root/SignalBus")
 
 func _ready():
 
@@ -25,17 +24,17 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 	var gravity_force = self.calculate_gravity(delta)
 	direction = self.input_controller(direction)
-	var target_velocity = self.calculate_target_velocity(speed,direction,Vector3.ZERO)
+	var target_velocity = self.calculate_target_velocity(speed,direction,gravity_force,self.input_press)
 	look_at_move(direction)
 	self.move_entity(delta,target_velocity)
 	self.direction = direction
 
 func _on_enemies_detector_body_entered(body):
-	
+
 	if "mob_damage"  in body:
-		health -= body.mob_damage 
+		health -= body.mob_damage
 		if health <= 0:
-			player_dead.emit()
+			self.signalBus.emit_signal('player_dead')
 
 func get_ore_from_inventory(ore_type:String):
 

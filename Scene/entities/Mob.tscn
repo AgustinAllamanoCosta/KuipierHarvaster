@@ -23,7 +23,7 @@ script = ExtResource("1_2unma")
 mesh = SubResource("CylinderMesh_jw76w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.19802, 0, 0, 0, 1, 0, 0, 0, 1.20084, 0, 0, 0)
+transform = Transform3D(0.931827, 0, 0, 0, 1, 0, 0, 0, 0.979219, 0, 0, 0)
 shape = SubResource("CylinderShape3D_2craq")
 
 [node name="HealthBarTool" parent="." instance=ExtResource("2_martm")]
